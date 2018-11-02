@@ -29,6 +29,15 @@ public class Guard extends Label {
 	public void setGuard(Guard guard) {
 		this.guard = guard.guard;
 	}
+	
+	public void setGuard(String guard) {
+		this.guard = guard;
+	}
+	
+	public String getGuard() {
+		return guard;
+	}
+	
 	public void conjoin(Guard guard){
 		// this ^ g
 		if(guard == null) return;

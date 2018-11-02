@@ -24,6 +24,10 @@ public class Synchronization extends Label {
 	public String getChannelName() {
 		return this.channel;
 	}
+	
+	public void setChannelName(String channel) {
+		this.channel = channel;
+	}
 
 	public Synchronization(String channel, SyncType type, int x, int y) {
 		super(x, y);
