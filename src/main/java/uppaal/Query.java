@@ -19,7 +19,6 @@ public class Query {
 		Iterator<Element> i = queryElement.getChildren().iterator();
 		while (i.hasNext()) {
 			Element child = i.next();
-			System.out.println("QUERY " + child.getName());
 			if (child.getName().equals("formula")) {
 				this.formula = child.getValue();
 			} else if (child.getName().contentEquals("comment")) {

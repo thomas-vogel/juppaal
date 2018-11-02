@@ -65,7 +65,6 @@ public class NTA extends UppaalElement{
 			Iterator<Element> i = uppaalDoc.getRootElement().getChildren().iterator();
 			while (i.hasNext()) {
 				Element child = i.next();
-				System.out.println("CHILD " + child.getName());
 				if (child.getName().equals("declaration")) {
 					assert child.getContent().size() == 1 : "Declaration elements should not have children";
 					declarations = new Declaration(child);

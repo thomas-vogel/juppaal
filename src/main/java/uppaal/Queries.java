@@ -19,7 +19,6 @@ public class Queries {
 		Iterator<Element> i = queriesElement.getChildren().iterator();
 		while (i.hasNext()) {
 			Element child = i.next();
-			System.out.println(child.getName());
 			if (child.getName().equals("query")) {
 				Query query = new Query(child);
 				this.queries.add(query);
