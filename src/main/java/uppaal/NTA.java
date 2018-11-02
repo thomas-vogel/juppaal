@@ -21,6 +21,7 @@ import org.jdom.output.XMLOutputter;
 public class NTA extends UppaalElement{
 	private Declaration declarations = new Declaration();
 	private SystemDeclaration systemDeclaration = new SystemDeclaration();
+	private Queries queries = new Queries();
 	
 	public SystemDeclaration getSystemDeclaration() {
 		return systemDeclaration;
@@ -28,6 +29,14 @@ public class NTA extends UppaalElement{
 
 	public void setSystemDeclaration(SystemDeclaration systemDeclaration) {
 		this.systemDeclaration = systemDeclaration;
+	}
+	
+	public Queries getQueries() {
+		return queries;
+	}
+
+	public void setQueries(Queries queries) {
+		this.queries = queries;
 	}
 
 	private List<Automaton> automata = new LinkedList<Automaton>();
@@ -56,6 +65,7 @@ public class NTA extends UppaalElement{
 			Iterator<Element> i = uppaalDoc.getRootElement().getChildren().iterator();
 			while (i.hasNext()) {
 				Element child = i.next();
+				System.out.println("CHILD " + child.getName());
 				if (child.getName().equals("declaration")) {
 					assert child.getContent().size() == 1 : "Declaration elements should not have children";
 					declarations = new Declaration(child);
@@ -64,6 +74,8 @@ public class NTA extends UppaalElement{
 					automata.add(automaton);
 				} else if (child.getName().equals("system")) {
 					systemDeclaration = new SystemDeclaration(child);
+				} else if (child.getName().equals("queries")) {
+					queries = new Queries(child);
 				} else {
 					System.err.println("unhandled element: "+child.getName());
 				}
@@ -385,6 +397,7 @@ public class NTA extends UppaalElement{
 			result.addContent(automaton.generateXMLElement());
 		}
 		result.addContent(systemDeclaration.generateXMLElement());
+		result.addContent(queries.generateXMLElement());
 		return result;
 	}
 	
