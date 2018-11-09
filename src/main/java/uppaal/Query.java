@@ -20,9 +20,9 @@ public class Query {
 		while (i.hasNext()) {
 			Element child = i.next();
 			if (child.getName().equals("formula")) {
-				this.formula = child.getValue();
+				this.formula = child.getValue().trim();
 			} else if (child.getName().contentEquals("comment")) {
-				this.comment = child.getValue();
+				this.comment = child.getValue().trim();
 			}
 		}
 	}
